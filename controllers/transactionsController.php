@@ -38,7 +38,7 @@ class Transactions extends AppController{
 	     $this->set("accounts", $accounts);
 	}
 
-	public function edit(){
+	public function edit($args){
 		$categories = $this->db->find("categories","all");
 	  	$accounts = $this->db->find("accounts");
 	 	$this->set("categories", $categories);
@@ -67,7 +67,22 @@ class Transactions extends AppController{
 	
 
 	public function delete($args){
+			if ($_GET) {
+		       if (!empty($_GET['id'])) {
+		          $condition = "id=".$_GET['id'];
+		             $this->db->delete("transactions", $condition);
+		        if ($this->db->numberRows>0) {
+		          		$this->redirect(array("controller"=>"transactions"));
+		             }
+		          else{
+		         	echo"<script type='text/javascript'>
+				     alert('No se elimino');
+				    window.location='transactions';
+				    </script>";
+		         }
+		       }
 
+		      }
 	}
 
 	

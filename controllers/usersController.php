@@ -64,21 +64,18 @@ class Users extends AppController
 
 	public function delete($args)
 	{
-		if ($_GET) 
-		{
-		 	if (!empty($_GET['id']))
-		 	{
-			  	$condition = "id=".$_GET['id'];
-			 	 echo $this->db->delete("users", $condition);
-			 	if ($this->db->numberRows>0) {
-			 		echo "Registro eliminado!";
-			 	 }
-			 	 else
-			 	 {
-			 		echo "nose a eliminado";
-			 	 }
-		 	}
-	 	}
+				if ($_GET) {
+		 if (!empty($_GET['id'])) {
+		  $condition = "id=".$_GET['id'];
+		 	$this->db->delete("users", $condition);
+		 	if ($this->db->numberRows>0) {
+		 		echo "Registro eliminado!";
+		 	 }
+		 	 else{
+		 		echo "nose a eliminado";
+		 	 }
+		 }
+		 }
 
 	}
 

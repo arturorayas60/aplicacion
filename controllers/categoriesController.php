@@ -17,7 +17,7 @@ class Categories extends AppController{
 			}			
 		}
 	}
-	public function edit(){
+	public function edit($args){
 		if ($_POST) {
 		   $filter = new Validations();
 		  	if (!empty($_POST['new_name'])) {

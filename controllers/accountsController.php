@@ -24,21 +24,19 @@ class Accounts extends AppController{
 		$this->set("users",$users);
 	}
 
-	public function edit()
+	public function edit($args)
 	{
-		if ($_POST) 
-		{
-		    $filter = new Validations();
-			if (!empty($_POST['new_name'])) {
-			    $_POST['name'] = $filter->sanitizeText($_POST["new_name"]);
-			}
-			if ($this->db->update("accounts",$_POST)) {
-			    $this->redirect(array("controller"=>"accounts"));
-			}
-			else
-			{
-			    $this->redirect(array("controller"=>"accounts","action"=>"edit/".$args[0]));
-			}
+				 if ($_POST) {
+		   $filter = new Validations();
+		  if (!empty($_POST['new_name'])) {
+		        $_POST['name'] = $filter->sanitizeText($_POST["new_name"]);
+		  }
+		  if ($this->db->update("accounts",$_POST)) {
+		     $this->redirect(array("controller"=>"accounts"));
+		   }
+		   else{
+		      $this->redirect(array("controller"=>"accounts","action"=>"edit/".$args[0]));
+		   }
 		}
 		$account = $this->db->find("accounts","first", array("conditions"=>"accounts.id=".$args[0]));
 		$this->set("account", $account);
