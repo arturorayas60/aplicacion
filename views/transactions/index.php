@@ -1,36 +1,33 @@
-<?php 
-	function getMoney($Amount){
-		if ($Amount<0) {
-			$Amount = str_replace("-", "", $Amount);
-			$Amount =  number_format($Amount,2);
-			$Amount = '<div style="color:red;">-$'.$Amount.'</div>';
+<?php
+	function getMoney($amount){
+		if ($amount<0) {
+			$amount = str_replace("-", "", $amount);
+			$amount = number_format($amount, 2);
+			$amount = '<div style="color:red">-$'.$amount.'</div>';
+		}else{
+			$amount = number_format($amount, 2);
+			$amount = '<div style="color:#00FF00">&nbsp;$'.$amount.'</div>';
 		}
-		else
-		{
-			$Amount =  number_format($Amount,2);
-			$Amount = '<div style="color:green">&nbsp;$'.$Amount.'</div>';
-		}
-		return $Amount;
+		return $amount;
 	}
 
-	function getBalan($transactions){
-        $num = count($transactions);
-        asort($transactions);
-        for ($i=0; $i < $num; $i++) {
-        	$j = 0; 
-        	$num = 0;
-        	foreach ($transactions as $transaction) {
-        		if($j<$num+$i){
-        			$sum += $transactions[5];
-        		}
-        		$j++;
-        	}
-        	$Balance[$i]=$num;
-        }
-        return $Balance;
+	function getBalance($transactions){
+		$num = count($transactions);
+		asort($transactions);
+		for ($i=0; $i < $num ; $i++) { 
+			$j = 0;
+			$sum = 0;
+			foreach ($transactions as $transaction) {
+				if ($j < $num-$i){
+					$sum += $transaction[5];
+				}
+				$j++;
+			}
+			$balance[$i] = $sum;
+		}
+		return $balance; 
 	}
-
-	 ?>
+?>
 
 <div class="row">
 	<div class="col-md-11">
@@ -49,7 +46,7 @@
 		<th>Actions</th>
 	</tr>
 	<?php
-		$balance = getBalan($transactions); 
+		$balance = getBalance($transactions); 
 		$i=0;
 		foreach ($transactions as $transaction): 
 
