@@ -3,7 +3,7 @@
 	<div class="col-md-12">
 		<form action="<?php echo APP_URL; ?>accounts/add" method="POST">
 			<div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">Nombre:</label>
                 <input type="text" name="name" class="form-control" id="exampleInputEmail3" placeholder="Account name">
             </div>
             <select name="user_id" style="padding:10px 50px 10px 50px;">
