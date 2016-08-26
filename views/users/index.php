@@ -15,7 +15,7 @@
 		<td><?php echo $user['rol']; ?></td>
 		<td>
 			<a href="<?php echo APP_URL;?>users/edit/<?php echo $user['id']; ?>" >Editar</a>
-			<a href="<?php echo APP_URL;?>users/delete/<?php echo $user['id']; ?>">Eliminar</a>
+			<a href="<?php echo APP_URL; ?>users/delete/?id=<?php echo $user["id"]; ?>">Eliminar</a>
 		</td>
 	</tr>
 	<?php endforeach; ?>
